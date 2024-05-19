@@ -17,13 +17,13 @@ const FileUploadForm = () => {
 
 
     const onSubmit = (e) => {
+      e.preventDefault()
         startTransition(async () => {
             if (selectedFile) {
                 const response = await handleTask1ImageSubmit(selectedFile);
                 setPredictedLabel(JSON.stringify(response))
             }
         })
-        e.preventDefault()
     }
     return (
         <div>
