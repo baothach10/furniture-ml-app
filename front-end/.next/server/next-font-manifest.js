@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/thachngo/Documents/RMIT_DOCUMENTS/LEARNING_PROGRAMS/COSC2753 - Machine Learning/Assignment2/Web UI/furniture-ml-app/front-end/src/app/layout\":[\"static/media/c9a5bc6a7c948fb0-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

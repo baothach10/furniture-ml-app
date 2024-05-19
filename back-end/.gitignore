@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+**/*.pyc
+*.log
+**/*.log
+*.pyc
+*.log
+static/
