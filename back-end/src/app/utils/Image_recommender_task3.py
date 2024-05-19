@@ -178,7 +178,7 @@ class ImageRecommenderTask3:
             plt.tight_layout()
             plt.show()
 
-        return [filtered_file_paths[idx] for idx in indices[0]]
+        return [filtered_file_paths[idx] for idx in indices[0]],style
 
     def get_random_image(self, category, style):
         data_dir = 'Data'
@@ -193,10 +193,10 @@ def save_recommender(cnn_model_path, feature_data_path, classifier,save_path):
         pickle.dump(recommender, f)
 
 # Example usage
-cnn_model_path = r'./src/app/model/ResNet34Dropout_feature_extractor.h5'
-feature_data_path = r'./src/app/feature_extraction/features_resnet34_dropout_full.npz'
-classifier = r'./src/app/model/Task3.h5'
-save_path = r'./src/app/model/task3_recommender.pkl'
-save_recommender(cnn_model_path, feature_data_path, classifier,save_path)    
+# cnn_model_path = r'./src/app/model/ResNet34Dropout_feature_extractor.h5'
+# feature_data_path = r'./src/app/feature_extraction/features_resnet34_dropout_full.npz'
+# classifier = r'./src/app/model/Task3.h5'
+# save_path = r'./src/app/model/task3_recommender.pkl'
+# save_recommender(cnn_model_path, feature_data_path, classifier,save_path)    
 
 

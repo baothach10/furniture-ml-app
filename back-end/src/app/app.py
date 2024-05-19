@@ -18,7 +18,8 @@ from keras.models import load_model
 import matplotlib.pyplot as plt
 from .utils.Image_recommender_task3 import ImageRecommenderTask3
 
-    
+
+
 class SqueezeExcite(tf.keras.Layer):
     def __init__(self, input_filters, se_ratio, **kwargs):
         super(SqueezeExcite, self).__init__()
@@ -70,12 +71,13 @@ def load_recommender(save_path):
     return recommender
 
 # Initialize the ImageRecommender Task 2
-model_path = r'./src/app/model/task2_recommender.pkl'
-recommender = load_recommender(model_path)
+model_path_task2 = r'./src/app/model/task2_recommender.pkl'
+recommender = load_recommender(model_path_task2)
+
 
 # Initialize the ImageRecommender Task 3
-model_path = r'./src/app/model/task3_recommender.pkl'
-recommender_task3 = load_recommender()
+model_path_task3 = r'./src/app/model/task3_recommender.pkl'
+recommender_task3 = load_recommender(model_path_task3)
     
 app.mount(
     "/static",
@@ -157,6 +159,7 @@ async def add_image(
         return {"recommendations": recommendations}
     return {"error": "No file provided"}
 
+
 @app.post(
     "/task3",
     status_code=status.HTTP_201_CREATED,
@@ -169,3 +172,8 @@ async def add_image(
         image = Image.open(io.BytesIO(contents))
         image_path = "static/uploaded_image.jpg"
         image.save(image_path)
+
+        recommendations,style = recommender_task3.recommend_images(image_path, top_n=10)
+        recommendations = [rec.replace('\\', '/') for rec in recommendations]
+        recommendations = [os.path.join("static", path) for path in recommendations]
+        return {"recommendations": recommendations,"style":style}

@@ -9,3 +9,4 @@ static/
 venv/
 src/app/model/
 src/app/feature_extraction
+.DS_Store
