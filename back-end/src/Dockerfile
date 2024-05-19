@@ -1,16 +1,15 @@
-FROM python:3.11-slim as base
+FROM python:3.10-slim as base
 
 RUN apt-get update && apt-get install -y ffmpeg
 
 WORKDIR /
 RUN mkdir /logs
-RUN mkdir -p /static/audio
 
 # Copy the requirements.txt file to the container
 COPY ./requirements.txt /
 
 # Install dependencies using pip
-RUN pip3 install --no-cache-dir -r /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
 ### DEVELOPMENT ###
 FROM base as development
